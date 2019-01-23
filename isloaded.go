@@ -1,12 +1,17 @@
 package lsmod
 
+// IsLoaded just check if the specified module loaded
 func IsLoaded(name string) (bool, error) {
 	mods, err := LsMod()
 	if err != nil {
 		return false, err
 	}
 
-	_, ok := mods[name]
+	info, ok := mods[name]
 
-	return ok, nil
+	if !ok {
+		return false, nil
+	}
+
+	return info.Instances > 0 && info.State == StateLive, nil
 }

@@ -1,5 +1,6 @@
 package lsmod
 
+// ModInfo contains a module info provided by /proc/modules
 type ModInfo struct {
 	Depends   []string
 	Mem       uint64

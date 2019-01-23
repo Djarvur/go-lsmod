@@ -7,6 +7,7 @@ import (
 
 type modState uint8
 
+// Possible states of the module
 const (
 	StateLive      modState = 1
 	StateLoading   modState = 2

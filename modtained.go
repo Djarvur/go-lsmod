@@ -4,6 +4,7 @@ import "fmt"
 
 type modTained uint32
 
+// possibble tained flags of the module
 const (
 	TainedNone modTained = 0      // No tained flag
 	TainedP    modTained = 1      // (P): A module with a non-GPL license has been loaded, this includes modules with no license. Set by modutils >= 2.4.9 and module-init-tools.

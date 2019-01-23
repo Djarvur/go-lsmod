@@ -11,14 +11,13 @@ import (
 )
 
 const (
-	ProcModules = "/proc/modules"
-
 	minFieldsPerLine = 6
 	maxFieldsPerLine = 7
 	noDeps           = "-"
 	delimDeps        = ","
 )
 
+// LsMod is a function reading and parsing /proc/modules pseudo-file
 func LsMod() (map[string]ModInfo, error) {
 	file, err := os.Open(ProcModules)
 	if err != nil {
