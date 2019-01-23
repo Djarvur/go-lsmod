@@ -37,7 +37,7 @@ func LsMod() (map[string]ModInfo, error) {
 			return nil, fmt.Errorf("invalid input line %q", line)
 		}
 
-		info, err := parseInfo(fields)
+		info, err := parseInfo(fields) // nolint: govet
 		if err != nil {
 			return nil, errors.Wrapf(err, "error parsing %q", ProcModules)
 		}
