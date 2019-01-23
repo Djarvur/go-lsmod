@@ -11,8 +11,8 @@ before_install:
   - wget -O - -q https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh| sh -b /bin
 
 script:
-  - /bin/golangci-lint run
-  - go test -v -race ./...
+  - env GO111MODULE=on /bin/golangci-lint run
+  - env GO111MODULE=on go test -v -race ./...
 
 after_success:
   - test "$TRAVIS_GO_VERSION" = "1.11" && goveralls -service=travis-ci
