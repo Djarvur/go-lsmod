@@ -14,7 +14,7 @@ const (
 	ProcModules = "/proc/modules"
 
 	minFieldsPerLine = 6
-	maxFieldsPerLine = 6
+	maxFieldsPerLine = 7
 	noDeps           = "-"
 	delimDeps        = ","
 )
