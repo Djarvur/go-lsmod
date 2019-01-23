@@ -54,24 +54,28 @@ func LsMod() (map[string]ModInfo, error) {
 }
 
 func parseInfo(fields []string) (info ModInfo, err error) {
-	info.Mem, err = strconv.ParseUint(fields[1], 10, 64)
+	info.Mem, err = parseUint(fields[1])
 	if err != nil {
 		return info, errors.Wrap(err, "invalid mem (field 2)")
 	}
-	instances, err := strconv.ParseUint(fields[2], 10, 64)
+
+	info.Instances, err = parseUint(fields[2])
 	if err != nil {
 		return info, errors.Wrap(err, "invalid instances (field 3)")
 	}
-	info.Instances = instances
+
 	info.Depends = splitDeps(fields[3])
+
 	info.State, err = parseState(fields[4])
 	if err != nil {
 		return info, errors.Wrap(err, "unknown state (field 5)")
 	}
-	info.Offset, err = strconv.ParseUint(fields[5], 16, 64)
+
+	info.Offset, err = parseUint(fields[5])
 	if err != nil {
 		return info, errors.Wrap(err, "invalid offset (field 6)")
 	}
+
 	if len(fields) == maxFieldsPerLine {
 		info.Tained, err = parseTained(fields[6])
 		if err != nil {
@@ -88,4 +92,12 @@ func splitDeps(line string) []string {
 	}
 
 	return strings.Split(strings.TrimRight(line, delimDeps), delimDeps)
+}
+
+func parseUint(line string) (uint64, error) {
+	if strings.HasPrefix(line, "0x") {
+		return strconv.ParseUint(line[2:], 16, 64)
+	}
+
+	return strconv.ParseUint(line, 10, 64)
 }
