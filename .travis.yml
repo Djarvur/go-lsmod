@@ -8,10 +8,10 @@ before_install:
   - go get github.com/axw/gocov/gocov
   - go get github.com/mattn/goveralls
   - go get golang.org/x/tools/cmd/cover
-  - wget -O - -q https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh| sh -b /bin
+  - wget -O - -q https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh| sh
 
 script:
-  - env GO111MODULE=on /bin/golangci-lint run
+  - env GO111MODULE=on ./bin/golangci-lint run
   - env GO111MODULE=on go test -v -race ./...
 
 after_success:
