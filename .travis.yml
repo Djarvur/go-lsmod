@@ -11,7 +11,7 @@ before_install:
   - wget -O - -q https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh| sh -b /bin
 
 script:
-  - golangci-lint run
+  - /bin/golangci-lint run
   - go test -v -race ./...
 
 after_success:
