@@ -1,0 +1,5 @@
+# go-lsmod image:https://godoc.org/github.com/Djarvur/go-lsmod?status.svg["GoDoc",link="http://godoc.org/github.com/Djarvur/go-lsmod"] image:https://travis-ci.org/Djarvur/go-lsmod.svg["Build Status",link="https://travis-ci.org/Djarvur/go-lsmod"] image:https://coveralls.io/repos/Djarvur/go-lsmod/badge.svg?branch=master&service=github["Coverage Status",link="https://coveralls.io/github/Djarvur/go-lsmod?branch=master"]
+
+simple `/proc/modules` parser
+
+*Linux only!*
