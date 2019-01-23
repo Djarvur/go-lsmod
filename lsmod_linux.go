@@ -23,7 +23,7 @@ func LsMod() (map[string]ModInfo, error) {
 	if err != nil {
 		return nil, errors.Wrapf(err, "Error opening %q", ProcModules)
 	}
-	defer file.Close()
+	defer file.Close() // nolint: errcheck
 
 	mods := make(map[string]ModInfo)
 
