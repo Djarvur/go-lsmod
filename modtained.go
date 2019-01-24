@@ -25,7 +25,6 @@ const (
 	TainedK    modTained = 32768  // (K): The kernel has been live patched.
 	TainedX    modTained = 65536  // (X): Auxiliary taint, defined and used by for distros.
 	TainedT    modTained = 131072 // (T): The kernel was built with the struct randomization plugin.
-
 )
 
 func parseTained(t string) (modTained, error) { // nolint: gocyclo
@@ -67,6 +66,7 @@ func parseTained(t string) (modTained, error) { // nolint: gocyclo
 	case "(T)":
 		return TainedT, nil
 	}
+
 	return 0, fmt.Errorf("unknown tained flag %q", t)
 }
 
@@ -111,5 +111,6 @@ func (t modTained) String() string { // nolint: gocyclo
 	case TainedT:
 		return "(T)"
 	}
-	panic(fmt.Errorf("unknoiwn tained flag %d", t))
+
+	panic(fmt.Errorf("unknown tained flag %d", t))
 }
