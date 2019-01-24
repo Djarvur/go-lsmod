@@ -6,9 +6,9 @@ import "runtime"
 
 // LsMod is a function reading and parsing /proc/modules pseudo-file
 func LsMod() (map[string]ModInfo, error) {
-	if runtime.GOOS != "linux" {
-		panic("not implemented")
+	if runtime.GOOS == "linux" {
+		return parse(ProcModules) // just to stop linter comlaining about unused code on !linux
 	}
 
-	return parse()
+	panic("not implemented")
 }

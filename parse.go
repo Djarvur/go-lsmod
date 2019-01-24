@@ -20,10 +20,10 @@ const (
 	delimDeps        = ","
 )
 
-func parse() (map[string]ModInfo, error) {
-	file, err := os.Open(ProcModules)
+func parse(fileName string) (map[string]ModInfo, error) {
+	file, err := os.Open(fileName) // nolint: gosec
 	if err != nil {
-		return nil, errors.Wrapf(err, "Error opening %q", ProcModules)
+		return nil, errors.Wrapf(err, "Error opening %q", fileName)
 	}
 	defer file.Close() // nolint: errcheck
 
