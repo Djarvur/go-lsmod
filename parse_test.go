@@ -31,7 +31,7 @@ var testData = map[string]ModInfo{
 		Mem:       3,
 		Instances: 1,
 		Offset:    3,
-		Tained:    TainedF,
+		Tainted:   TaintedF,
 		State:     StateLive,
 	},
 	"mod4": ModInfo{
