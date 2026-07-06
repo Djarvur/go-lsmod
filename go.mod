@@ -1,3 +1,5 @@
 module github.com/Djarvur/go-lsmod
 
-require github.com/pkg/errors v0.8.1
+go 1.26.1
+
+require github.com/pkg/errors v0.9.1
